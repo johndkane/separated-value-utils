@@ -36,7 +36,7 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      SeparatedValuesLib.Test\bin\$(BuildConfiguration)\**\*.Test*.dll
+      SeparatedValuesLib.Test\bin\$(BuildConfiguration)\**\SeparatedValuesLib.Test.dll
       !**\*TestAdapter.dll
       !**\obj\**
       !**\xunit.runner.visualstudio.testadapter.dll
