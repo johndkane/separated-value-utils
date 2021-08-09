@@ -34,7 +34,13 @@ steps:
     configuration: '$(buildConfiguration)'
 - task: VSTest@2
   inputs:
-    testSelector: 'testRun'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      SeparatedValuesLib.Test\bin\$(BuildConfiguration)\**\*.Test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+      !**\xunit.runner.visualstudio.testadapter.dll
+      !**\xunit.runner.visualstudio.dotnetcore.testadapter.dll
     searchFolder: '$(System.DefaultWorkingDirectory)'
     runTestsInIsolation: true
-    codeCoverageEnabled: false
+    codeCoverageEnabled: true
