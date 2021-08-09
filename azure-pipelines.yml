@@ -35,6 +35,7 @@ steps:
       SeparatedValuesLib.Test\bin\$(BuildConfiguration)\**\SeparatedValuesLib.Test.dll
       !**\*TestAdapter.dll
       !**\obj\**
+      !**\ref\**
       !**\xunit.runner.visualstudio.testadapter.dll
       !**\xunit.runner.visualstudio.dotnetcore.testadapter.dll
     searchFolder: '$(System.DefaultWorkingDirectory)'
