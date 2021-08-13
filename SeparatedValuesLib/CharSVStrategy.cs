@@ -9,7 +9,7 @@
     /// and <see cref="Escape(string, string)"/>.
     /// </remarks>
     /// </summary>
-    public class CharSeparatedValuesStrategy {
+    public class CharSVStrategy {
 
         /// <summary>
         /// The separator character to use.
@@ -20,7 +20,7 @@
         /// Constructs a strategy instance around the given separator character <paramref name="separator"/>.
         /// </summary>
         /// <param name="separator"></param>
-        public CharSeparatedValuesStrategy(char separator) {
+        public CharSVStrategy(char separator) {
             this.SeparatorChar = separator;
         }
 
@@ -62,10 +62,10 @@
 
         /// <summary>
         /// Implicitly casts a .NET <see cref="System.Char"/> into
-        /// a <see cref="CharSeparatedValuesStrategy"/>;
+        /// a <see cref="CharSVStrategy"/>;
         /// </summary>
         /// <param name="separator"></param>
-        static public implicit operator CharSeparatedValuesStrategy(char separator)
+        static public implicit operator CharSVStrategy(char separator)
             => new(separator);
     }
 }

@@ -8,14 +8,14 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// separator character <see cref="SeparatorChar"/> to the options.
     /// </summary>
     /// <typeparam name="TLineObject"></typeparam>
-    public class CharSeparatedValuesOptions<TLineObject> : WriterOptions<TLineObject> {
+    public class CharSVOptions<TLineObject> : WriterOptions<TLineObject> {
 
-        static public CharSeparatedValuesOptions<TLineObject> Csv(
+        static public CharSVOptions<TLineObject> Csv(
             TextWriter writer,
             IEnumerable<string> columnSpecOrNull = null,
             DefineObjectDelegate<TLineObject> defineObjectOrDefault = null
         ) {
-            var csvOptions = new CharSeparatedValuesOptions<TLineObject>(
+            var csvOptions = new CharSVOptions<TLineObject>(
                 separator: ',',
                 writer: writer,
                 autoCloseWriter: false,
@@ -27,12 +27,12 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
             return csvOptions;
         }
 
-        static public CharSeparatedValuesOptions<TLineObject> Tsv(
+        static public CharSVOptions<TLineObject> Tsv(
             TextWriter writer,
             IEnumerable<string> columnSpec = null,
             DefineObjectDelegate<TLineObject> defineObjectOrDefault = null
         ) {
-            var csvOptions = new CharSeparatedValuesOptions<TLineObject>(
+            var csvOptions = new CharSVOptions<TLineObject>(
                 separator: '\t',
                 writer: writer,
                 autoCloseWriter: false,
@@ -44,7 +44,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
             return csvOptions;
         }
 
-        public CharSeparatedValuesOptions(char separator, TextWriter writer, bool autoCloseWriter,
+        public CharSVOptions(char separator, TextWriter writer, bool autoCloseWriter,
             IEnumerable<string> columnSpecOrNull,
             DefineObjectDelegate<TLineObject> defineLineOrDefault = null,
             StringifyValueDelegate stringifyValueOrDefault = null)
@@ -52,7 +52,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
             : base(writer: writer, autoCloseWriter: autoCloseWriter,
                 columnSpecOrNull: columnSpecOrNull) {
 
-            var strategy = new CharSeparatedValuesStrategy(separator);
+            var strategy = new CharSVStrategy(separator);
 
             AssignFuncEscapeValue(strategy.Escape);
             AssignFuncSeparateValue(strategy.Separate);
