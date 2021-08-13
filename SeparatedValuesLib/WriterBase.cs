@@ -16,7 +16,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// Implementors should inherit this class. For an example see the 
     /// <see cref="CharSeparatedValuesWriter{TLineObject}"/> subclass.
     /// </remarks>
-    public abstract class SeparatedValuesWriterBase<TLineObject> {
+    public abstract class WriterBase<TLineObject> {
 
         /// <summary>
         /// Settings provided to this writer.
@@ -32,7 +32,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
         /// Create a writer with the given options.
         /// </summary>
         /// <param name="options"></param>
-        public SeparatedValuesWriterBase(WriterOptions<TLineObject> options) {
+        public WriterBase(WriterOptions<TLineObject> options) {
             Settings = options ?? throw new ArgumentNullException(nameof(options));
             Stats = new WriterStats();
         }

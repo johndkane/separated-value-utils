@@ -1,6 +1,6 @@
 ﻿namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// <summary>
-    /// Stringifies a value for use by the <see cref="SeparatedValuesWriterBase{TLineObject}"/>.
+    /// Stringifies a value for use by the <see cref="WriterBase{TLineObject}"/>.
     /// </summary>
     /// <param name="value">The value to format.</param>
     /// <param name="columnName">The column name the value belongs to.</param>

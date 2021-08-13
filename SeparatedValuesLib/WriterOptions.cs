@@ -6,7 +6,7 @@ using System.Reflection;
 namespace Com.PlanktonSoup.SeparatedValuesLib {
 
     /// <summary>
-    /// Options for the <see cref="SeparatedValuesWriterBase{TLineObject}"/>
+    /// Options for the <see cref="WriterBase{TLineObject}"/>
     /// </summary>
     public class WriterOptions<TLineObject> {
 
@@ -152,7 +152,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
 
         /// <summary>
         /// The columns to use for writing. The order of these columns
-        /// is retained by the <see cref="SeparatedValuesWriterBase{TLineObject}"/>.
+        /// is retained by the <see cref="WriterBase{TLineObject}"/>.
         /// </summary>
         public IEnumerable<string> ColumnSpec { get; internal protected set; }
     }
