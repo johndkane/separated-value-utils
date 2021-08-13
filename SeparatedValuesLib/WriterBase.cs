@@ -14,7 +14,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// <typeparam name="TLineObject">The type of objects that are written as lines</typeparam>
     /// <remarks>
     /// Implementors should inherit this class. For an example see the 
-    /// <see cref="CharSeparatedValuesWriter{TLineObject}"/> subclass.
+    /// <see cref="CharSVWriter{TLineObject}"/> subclass.
     /// </remarks>
     public abstract class WriterBase<TLineObject> {
 

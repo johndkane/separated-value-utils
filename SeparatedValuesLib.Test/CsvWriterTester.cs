@@ -36,7 +36,7 @@ namespace SeparatedValuesLib.Test {
 
             // define csv options
 
-            var csvOptions = CharSeparatedValuesOptions<Person>.Csv(writer: sbWriter,
+            var csvOptions = CharSVOptions<Person>.Csv(writer: sbWriter,
                 // 
                 columnSpecOrNull: columns,
                 defineObjectOrDefault: person => new Dictionary<string, object> {
@@ -48,7 +48,7 @@ namespace SeparatedValuesLib.Test {
 
             // create the csv writer
 
-            using (var csvWriter = new CharSeparatedValuesWriter<Person>(csvOptions)) {
+            using (var csvWriter = new CharSVWriter<Person>(csvOptions)) {
 
                 // and write lines with it
 
