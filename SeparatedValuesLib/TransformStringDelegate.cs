@@ -1,6 +1,6 @@
 ﻿namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// <summary>
-    /// Transforms a string vlaue for use by the <see cref="SeparatedValuesWriterBase{TLineObject}"/>.
+    /// Transforms a string vlaue for use by the <see cref="WriterBase{TLineObject}"/>.
     /// </summary>
     /// <param name="value">The value to transform.</param>
     /// <param name="columnName">The column name this value belongs to.</param>

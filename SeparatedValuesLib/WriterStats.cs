@@ -1,7 +1,7 @@
 ﻿namespace Com.PlanktonSoup.SeparatedValuesLib {
 
     /// <summary>
-    /// Stats maintained about the <see cref="SeparatedValuesWriterBase{TLineObject}"/> process.
+    /// Stats maintained about the <see cref="WriterBase{TLineObject}"/> process.
     /// </summary>
     public class WriterStats {
         /// <summary>

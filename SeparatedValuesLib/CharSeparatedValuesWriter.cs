@@ -7,7 +7,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// to a Character-Separated-Values format.
     /// </summary>
     /// <typeparam name="TLineObject"></typeparam>
-    public class CharSeparatedValuesWriter<TLineObject> : SeparatedValuesWriterBase<TLineObject>, IDisposable {
+    public class CharSeparatedValuesWriter<TLineObject> : WriterBase<TLineObject>, IDisposable {
 
         public CharSeparatedValuesStrategy Info { get; internal protected set; }
 
