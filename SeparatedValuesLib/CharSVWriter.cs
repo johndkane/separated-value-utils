@@ -9,9 +9,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// <typeparam name="TLineObject"></typeparam>
     public class CharSVWriter<TLineObject> : WriterBase<TLineObject>, IDisposable {
 
-        public CharSVStrategy Info { get; internal protected set; }
-
-        public CharSVWriter(CharSVOptions<TLineObject> options)             
+        public CharSVWriter(CharSVOptions<TLineObject> options)
             : base(options) {
             ;
         }
