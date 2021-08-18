@@ -8,5 +8,5 @@
     /// <remarks>
     /// This delegate is used in <see cref="WriterOptions{TLineObject}.FuncStringifyValue"/>
     /// </remarks>
-    public delegate string StringifyValueDelegate(object value, string columnName = null);
+    public delegate string StringifyValueDelegate(object value, WriterStats stats, ColumnInfo info);
 }

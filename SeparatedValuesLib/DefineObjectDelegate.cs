@@ -10,5 +10,5 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// <remarks>
     /// This delegate is used by <see cref="WriterOptions{TLineObject}.FuncDefineLineObject"/>
     /// </remarks>
-    public delegate Dictionary<string, object> DefineObjectDelegate<TObject>(TObject obj);
+    public delegate Dictionary<string, object> DefineObjectDelegate<TObject>(TObject obj, WriterStats stats);
 }
