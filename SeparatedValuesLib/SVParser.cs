@@ -6,7 +6,9 @@ using System.Text;
 namespace Com.PlanktonSoup.SeparatedValuesLib {
 
     /// <summary>
-    /// CSV reader based on Microsoft Excel type parsing logic.
+    /// CSV reader based on Microsoft Excel type parsing logic, but not necessarily 
+    /// exactly. 
+    /// See the Remarks section for details.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -15,14 +17,18 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// Values containing the separator character as part of the value must be 
     /// quoted otherwise the value will be split on the separator and considered
     /// two values.
-    /// A line ending with the separator is interpreted as having an empty value
+    /// A line ending with a separator is implied having an empty value
     /// after the separator.
-    /// Multi-line rows are not recognized by the parser: 
-    /// each line is interpreted as a complete row.
+    /// Multi-line rows are not recognized by the parser's <see cref="ParseAll"/>
+    /// method because it splits the text one newlines and 
+    /// each line is therefore interpreted as a complete row; however, the 
+    /// <see cref="ParseLine(string)"/> method does accept a string containing 
+    /// newline characters as a row and processes the included newline characters 
+    /// as part of the values they're in.
     /// </para>
     /// <para>
     /// Currently an empty line is treated as a single value of an empty string. There
-    /// are some good ideas here about how to implement it for more flexiblity
+    /// are some good ideas here about how to implement it for more flexiblity in the future
     /// https://stackoverflow.com/a/12755183/179972
     /// </para>
     /// </remarks>
