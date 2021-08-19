@@ -12,26 +12,6 @@ namespace SeparatedValuesLib.Test {
             // create a csv writer
 
             StringBuilder sb = new StringBuilder();
-<<<<<<< HEAD
-=======
-            TextWriter sbWriter = new StringWriter(sb);
-
-            // define csv options
-
-            var csvOptions = CharSVOptions<Person>.Csv(writer: sbWriter,
-                // 
-                columnSpecOrNull: columns,
-                defineObjectOrDefault: person => new Dictionary<string, object> {
-                    { Col_Fullname, string.Concat(person.FirstName, " ", person.LastName).Trim() },
-                    { Col_Age, person.Age },
-                    { Col_Birth, person.Birth },
-                    { Col_Note, person.Note },
-                });
-
-            // create the csv writer
-
-            using (var csvWriter = new CharSVWriter<Person>(csvOptions)) {
->>>>>>> 44fa28409c4555545145d07eb5a703650c87353d
 
             var csvWriter = TestableWriterCreator.CreateCsvPersonWriter(sb);
 

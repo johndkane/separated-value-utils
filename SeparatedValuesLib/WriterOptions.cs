@@ -94,13 +94,5 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
             this.FuncStringifyValue = stringifyValueOrDefault ?? WriterHelper.StringifyValue;
         }
 
-<<<<<<< HEAD
-=======
-        /// <summary>
-        /// The columns to use for writing. The order of these columns
-        /// is retained by the <see cref="WriterBase{TLineObject}"/>.
-        /// </summary>
-        public IEnumerable<string> ColumnSpec { get; internal protected set; }
->>>>>>> 44fa28409c4555545145d07eb5a703650c87353d
     }
 }
