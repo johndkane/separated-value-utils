@@ -5,6 +5,27 @@ using System.Text;
 
 namespace Com.PlanktonSoup.SeparatedValuesLib {
 
+    /// <summary>
+    /// CSV reader based on Microsoft Excel type parsing logic.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Values containing the quote character (qualifier) are expected to be quoted, 
+    /// otherwise it's an error. 
+    /// Values containing the separator character as part of the value must be 
+    /// quoted otherwise the value will be split on the separator and considered
+    /// two values.
+    /// A line ending with the separator is interpreted as having an empty value
+    /// after the separator.
+    /// Multi-line rows are not recognized by the parser: 
+    /// each line is interpreted as a complete row.
+    /// </para>
+    /// <para>
+    /// Currently an empty line is treated as a single value of an empty string. There
+    /// are some good ideas here about how to implement it for more flexiblity
+    /// https://stackoverflow.com/a/12755183/179972
+    /// </para>
+    /// </remarks>
     public class SVParser {
 
         readonly char separator;
@@ -17,6 +38,10 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
             this.separator = separator;
         }
 
+        /// <summary>
+        /// Parses all lines in the reader.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IEnumerable<string>> ParseAll() {
             string line;
             while ((line = reader.ReadLine()) != null) {
@@ -24,10 +49,15 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
             }
         }
 
+        /// <summary>
+        /// Parses a line of text.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         public IEnumerable<string> ParseLine(string line) {
 
             StringBuilder accumValue = new StringBuilder();
-            bool insideQualifiedValue = false;
+            bool valueCompleteSeparatorOnly = false;
             SVReaderState state = SVReaderState.S0_StartLine;
 
             string valueOnce() {
@@ -41,13 +71,15 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
             }
 
             foreach (char ch in line) {
+
+                valueCompleteSeparatorOnly = false;
+
                 switch (state) {
 
                     case SVReaderState.S0_StartLine:
 
                         if (ch == quote) {
                             state = SVReaderState.S1_QualificationOpener;
-                            insideQualifiedValue = true;
                         }
                         else if (ch == separator) {
                             state = SVReaderState.S5_ValueComplete;
@@ -115,6 +147,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
                             state = SVReaderState.S1_QualificationOpener;
                         }
                         if (ch == separator) {
+                            valueCompleteSeparatorOnly = true;
                             yield return valueOnce();
                         }
                         else {
@@ -133,7 +166,10 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
 
             // implicitly hits the endline here which is not handled by the above cases
 
-            if (state.In(SVReaderState.S4_BuildingValue)) {
+            if (state.In(SVReaderState.S0_StartLine)) {
+                yield return null;
+            }
+            else if (state.In(SVReaderState.S4_BuildingValue) || valueCompleteSeparatorOnly) {
                 yield return valueOnce();
             }
             else if (state.In(SVReaderState.S1_QualificationOpener,
