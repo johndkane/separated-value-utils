@@ -16,7 +16,11 @@
         /// </summary>
         /// <param name="separator"></param>
         public CharSVStrategy(char separator) {
+<<<<<<< HEAD:SeparatedValuesLib/CharSVStrategy.cs
             this.Separator = separator;
+=======
+            this.SeparatorChar = separator;
+>>>>>>> 44fa28409c4555545145d07eb5a703650c87353d:SeparatedValuesLib/CharSeparatedValuesStrategy.cs
         }
 
         /// <summary>
