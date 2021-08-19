@@ -19,10 +19,10 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
     /// two values.
     /// A line ending with a separator is implied having an empty value
     /// after the separator.
-    /// Multi-line rows are not recognized by the parser's <see cref="ParseAll"/>
+    /// Multi-line rows are not recognized by the parser's <see cref="ParseAllLines"/>
     /// method because it splits the text one newlines and 
     /// each line is therefore interpreted as a complete row; however, the 
-    /// <see cref="ParseLine(string)"/> method does accept a string containing 
+    /// <see cref="ParseRow(string)"/> method does accept a string containing 
     /// newline characters as a row and processes the included newline characters 
     /// as part of the values they're in.
     /// </para>
@@ -45,22 +45,26 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
         }
 
         /// <summary>
-        /// Parses all lines in the reader.
+        /// Parses all lines in the reader by splitting the text on newlines.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IEnumerable<string>> ParseAll() {
+        public IEnumerable<IEnumerable<string>> ParseAllLines() {
             string line;
             while ((line = reader.ReadLine()) != null) {
-                yield return ParseLine(line);
+                yield return ParseRow(line);
             }
         }
 
         /// <summary>
-        /// Parses a line of text.
+        /// Parses a row of text.
         /// </summary>
-        /// <param name="line"></param>
+        /// <param name="row"></param>
         /// <returns></returns>
-        public IEnumerable<string> ParseLine(string line) {
+        /// <remarks>
+        /// This row is not split into lines; any included newline characters
+        /// are considered part of the values they are included in.
+        /// </remarks>
+        public IEnumerable<string> ParseRow(string row) {
 
             StringBuilder accumValue = new StringBuilder();
             bool valueCompleteSeparatorOnly = false;
@@ -76,7 +80,7 @@ namespace Com.PlanktonSoup.SeparatedValuesLib {
                 throw new Exception();
             }
 
-            foreach (char ch in line) {
+            foreach (char ch in row) {
 
                 valueCompleteSeparatorOnly = false;
 

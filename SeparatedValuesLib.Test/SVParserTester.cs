@@ -27,7 +27,7 @@ Last";
 
             SVParser parser = new SVParser(',', '\"', reader);
             
-            var lines = parser.ParseAll().ToArray();
+            var lines = parser.ParseAllLines().ToArray();
 
             Assert.Equal(9, lines.Count());
 
