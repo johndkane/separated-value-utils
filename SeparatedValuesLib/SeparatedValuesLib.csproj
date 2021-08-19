@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Com.PlanktonSoup.SeparatedValuesLib</AssemblyName>
+    <RootNamespace>Com.PlanktonSoup.SeparatedValuesLib</RootNamespace>
+    <RuntimeIdentifiers>win;osx;linux</RuntimeIdentifiers>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+</Project>
